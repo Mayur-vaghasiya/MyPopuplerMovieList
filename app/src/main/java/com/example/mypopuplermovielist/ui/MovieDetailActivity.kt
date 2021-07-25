@@ -1,5 +1,6 @@
 package com.example.mypopuplermovielist.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -91,7 +92,8 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
         v?.let {
             when (v.id) {
                 R.id.ivBack -> {
-                    onBackPressed()
+                    startActivity(Intent(this@MovieDetailActivity, MainActivity::class.java))
+                    finish()
                 }
             }
         }
