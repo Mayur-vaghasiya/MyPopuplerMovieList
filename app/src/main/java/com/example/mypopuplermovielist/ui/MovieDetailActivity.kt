@@ -1,23 +1,19 @@
 package com.example.mypopuplermovielist.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import androidx.databinding.adapters.ViewGroupBindingAdapter.setListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.mypopuplermovielist.BR
 import com.example.mypopuplermovielist.R
 import com.example.mypopuplermovielist.base.BaseActivity
-import com.example.mypopuplermovielist.databinding.ActivityMainBinding
 import com.example.mypopuplermovielist.databinding.ActivityMovieDetailBinding
 import com.example.mypopuplermovielist.model.GetMovieDetailResponse
-import com.example.mypopuplermovielist.model.MoviesResponse
 import com.example.mypopuplermovielist.navigator.MovieListNavigator
 import com.example.mypopuplermovielist.util.Staticdatautility
 import com.example.mypopuplermovielist.viewmodel.MovieDetailViewModel
-import com.example.mypopuplermovielist.viewmodel.MovieListViewModel
 
 class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetailViewModel>(),
     View.OnClickListener,
@@ -30,6 +26,10 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
         if (intent.extras != null) {
             movieId = intent.extras!!.getLong("movieId")
+            if(movieId.equals(0)){
+                movieId=637649
+            }
+            Log.e("ID",movieId.toString())
 
         }
         setDefaultValues()
@@ -69,7 +69,7 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
 
     override fun setObservers() {
 
-        movieDetailVM.getMovieDetails(497698)
+        movieDetailVM.getMovieDetails(movieId)
         viewModel.movieDetail.observe(this, Observer<GetMovieDetailResponse> {
             binding.movieTitle.text = it.getTitle()
             binding.movieTagline.text=it.getTagline()

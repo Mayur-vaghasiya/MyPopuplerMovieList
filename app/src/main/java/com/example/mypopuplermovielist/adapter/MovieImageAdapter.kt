@@ -18,9 +18,9 @@ class MovieImageAdapter(
     private val context: Context,
     movieList: ArrayList<GetMoviesResponse.Result>,
 
-) :
+    ) :
     RecyclerView.Adapter<MovieImageAdapter.MyViewHolder>() {
-    private val movieList: ArrayList<GetMoviesResponse.Result> = movieList
+    var movieList: ArrayList<GetMoviesResponse.Result> = movieList
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -34,6 +34,10 @@ class MovieImageAdapter(
         return MyViewHolder(bind)
     }
 
+    fun updateBuyerList(moviesList: ArrayList<GetMoviesResponse.Result>) {
+        this.movieList = moviesList
+        notifyDataSetChanged()
+    }
     @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 

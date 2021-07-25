@@ -18,38 +18,34 @@ import retrofit2.Response
 class MovieListViewModel(application: Application) :
     BaseViewModel<MovieListNavigator>(application) {
     var service: ApiInterface? = null
-    /*private var mutableLiveGetMovieList: MutableLiveData<ArrayList<GetMoviesResponse.Movie>>? = null
-    private var movieListRepository: MovieListRepository = MovieListRepository()
-
-    init {
-        mutableLiveGetMovieList=movieListRepository.GetItemsImageList()
-    }
-
-    fun getMovieList(): MutableLiveData<ArrayList<GetMoviesResponse.Movie>>? {
-        return mutableLiveGetMovieList
-    }*/
     var recyclerListData: MutableLiveData<GetMoviesResponse.Result> = MutableLiveData()
 
     fun getRecyclerListDataObserver(): MutableLiveData<GetMoviesResponse.Result> {
         return recyclerListData
     }
 
-    fun getMovieImageList(){
+    fun getMovieImageList() {
         service = RetrofitInstance.getRetrofitInstance()!!.create(ApiInterface::class.java)
-        val call: Call<GetMoviesResponse>? = service?.getPopularMovies(API_KEY)
+        val call: Call<GetMoviesResponse.Result>? = service?.getPopularMovies(API_KEY)
 
-        call?.enqueue(object : Callback<GetMoviesResponse> {
+        call?.enqueue(object : Callback<GetMoviesResponse.Result> {
             override fun onResponse(
-                @NonNull call: Call<GetMoviesResponse>,
-                @NonNull response: Response<GetMoviesResponse>
+                @NonNull call: Call<GetMoviesResponse.Result>,
+                @NonNull response: Response<GetMoviesResponse.Result>
             ) {
-                if (response.code() == 200) {
-                    recyclerListData.value = response.body()?.Result()
-                    Log.e("Response", response.toString())
+
+                recyclerListData.value = response.body()
+                val responseBody = response.body()
+                Log.e("Repository", "Movies: ${response}")
+                if (responseBody != null) {
+                    Log.e("Repository", "Movies: ${responseBody}")
+                } else {
+                    Log.e("Repository", "Failed to get response")
                 }
+
             }
 
-            override fun onFailure(call: Call<GetMoviesResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetMoviesResponse.Result>, t: Throwable) {
                 recyclerListData.value = null
             }
         })

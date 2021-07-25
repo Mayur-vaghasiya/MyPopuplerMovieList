@@ -5,10 +5,10 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mypopuplermovielist.adapter.MovieImageAdapter
 import com.example.myapplication.network.ApiInterface
 import com.example.mypopuplermovielist.BR
 import com.example.mypopuplermovielist.R
+import com.example.mypopuplermovielist.adapter.MovieImageAdapter
 import com.example.mypopuplermovielist.base.BaseActivity
 import com.example.mypopuplermovielist.databinding.ActivityMainBinding
 import com.example.mypopuplermovielist.model.GetMoviesResponse
@@ -90,9 +90,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MovieListViewModel>(), Mo
 
     override fun setObservers() {
         movieListVM.getMovieImageList();
-        viewModel.getRecyclerListDataObserver().observe(this, Observer<GetMoviesResponse.Result> {
-            movieList.add(it)
-            movieImageAdapter.notifyDataSetChanged()
-        })
+        viewModel.getRecyclerListDataObserver().observe(this,
+            Observer { it ->
+                it?.let {
+                    movieList.addAll(listOf(it))
+                    movieImageAdapter.notifyDataSetChanged()
+                }
+            })
     }
 }
+

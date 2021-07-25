@@ -2,7 +2,6 @@ package com.example.myapplication.network
 
 import com.example.mypopuplermovielist.model.GetMovieDetailResponse
 import com.example.mypopuplermovielist.model.GetMoviesResponse
-import com.example.mypopuplermovielist.model.MoviesResponse
 import com.example.mypopuplermovielist.util.Staticdatautility.Companion.API_KEY
 import retrofit2.Call
 import retrofit2.http.GET
@@ -22,7 +21,7 @@ interface ApiInterface {
     @GET("movie/popular")
     fun getPopularMovies(
         @Query("api_key") apiKey: String,
-    ): Call<GetMoviesResponse>
+    ): Call<GetMoviesResponse.Result>
 
     @GET("movie/{movie_id}")
     fun getMovieDetail(

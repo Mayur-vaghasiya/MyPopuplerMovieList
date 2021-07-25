@@ -3,80 +3,31 @@ package com.example.mypopuplermovielist.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
+import java.util.ArrayList
 
-class GetMoviesResponse : Serializable {
-    @SerializedName("page")
-    @Expose
-    var page = 0
+data class GetMoviesResponse (
 
-    @SerializedName("results")
-    @Expose
-    var results: ArrayList<Result>? = null
+    @SerializedName("page") var page : Int,
+    @SerializedName("results") var results : ArrayList<Result>,
+    @SerializedName("total_pages") var totalPages : Int,
+    @SerializedName("total_results") var totalResults : Int
 
-    @SerializedName("total_pages")
-    @Expose
-    var totalPages = 0
+){
+    data class Result (
+        @SerializedName("adult") var adult : Boolean,
+        @SerializedName("backdrop_path") var backdropPath : String,
+        @SerializedName("genre_ids") var genreIds : List<Int>,
+        @SerializedName("id") var id : Int,
+        @SerializedName("original_language") var originalLanguage : String,
+        @SerializedName("original_title") var originalTitle : String,
+        @SerializedName("overview") var overview : String,
+        @SerializedName("popularity") var popularity : Double,
+        @SerializedName("poster_path") var posterPath : String,
+        @SerializedName("release_date") var releaseDate : String,
+        @SerializedName("title") var title : String,
+        @SerializedName("video") var video : Boolean,
+        @SerializedName("vote_average") var voteAverage : Int,
+        @SerializedName("vote_count") var voteCount : Int
 
-    @SerializedName("total_results")
-    @Expose
-    var totalResults = 0
-
-    inner class Result : Serializable {
-        @SerializedName("adult")
-        @Expose
-        var isAdult = false
-
-        @SerializedName("backdrop_path")
-        @Expose
-        var backdropPath: String? = null
-
-        @SerializedName("genre_ids")
-        @Expose
-        var genreIds: ArrayList<Int>? = null
-
-        @SerializedName("id")
-        @Expose
-        var id = 0
-
-        @SerializedName("original_language")
-        @Expose
-        var originalLanguage: String? = null
-
-        @SerializedName("original_title")
-        @Expose
-        var originalTitle: String? = null
-
-        @SerializedName("overview")
-        @Expose
-        var overview: String? = null
-
-        @SerializedName("popularity")
-        @Expose
-        var popularity = 0f
-
-        @SerializedName("poster_path")
-        @Expose
-        var posterPath: String? = null
-
-        @SerializedName("release_date")
-        @Expose
-        var releaseDate: String? = null
-
-        @SerializedName("title")
-        @Expose
-        var title: String? = null
-
-        @SerializedName("video")
-        @Expose
-        var isVideo = false
-
-        @SerializedName("vote_average")
-        @Expose
-        var voteAverage = 0
-
-        @SerializedName("vote_count")
-        @Expose
-        var voteCount = 0
-
-    }
+    )
 }

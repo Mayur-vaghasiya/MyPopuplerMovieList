@@ -24,7 +24,7 @@ class MovieDetailViewModel(application: Application) :
 
     fun getMovieDetails(id: Long) {
         service = RetrofitInstance.getRetrofitInstance()!!.create(ApiInterface::class.java)
-        val call: Call<GetMovieDetailResponse>? = service?.getMovieDetail(id)
+        val call: Call<GetMovieDetailResponse>? = service?.getMovieDetail(637649)
 
         call?.enqueue(object : Callback<GetMovieDetailResponse> {
             override fun onResponse(
