@@ -4,10 +4,9 @@ import android.app.Application
 import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.network.ApiInterface
+import com.example.mypopuplermovielist.network.ApiInterface
 import com.example.myapplication.network.RetrofitInstance
 import com.example.mypopuplermovielist.base.BaseViewModel
-import com.example.mypopuplermovielist.model.GetMovieDetailResponse
 import com.example.mypopuplermovielist.model.GetMoviesResponse
 import com.example.mypopuplermovielist.navigator.MovieListNavigator
 import com.example.mypopuplermovielist.util.Staticdatautility.Companion.API_KEY

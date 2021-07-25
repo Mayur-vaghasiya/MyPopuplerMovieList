@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.network.ApiInterface
+import com.example.mypopuplermovielist.network.ApiInterface
 import com.example.myapplication.network.RetrofitInstance
 import com.example.mypopuplermovielist.model.GetMovieDetailResponse
 import retrofit2.Call

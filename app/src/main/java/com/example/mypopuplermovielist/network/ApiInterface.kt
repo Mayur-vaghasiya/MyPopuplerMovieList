@@ -1,4 +1,4 @@
-package com.example.myapplication.network
+package com.example.mypopuplermovielist.network
 
 import com.example.mypopuplermovielist.model.GetMovieDetailResponse
 import com.example.mypopuplermovielist.model.GetMoviesResponse

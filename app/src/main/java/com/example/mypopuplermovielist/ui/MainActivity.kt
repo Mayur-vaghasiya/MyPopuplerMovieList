@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.network.ApiInterface
+import com.example.mypopuplermovielist.network.ApiInterface
 import com.example.mypopuplermovielist.BR
 import com.example.mypopuplermovielist.R
 import com.example.mypopuplermovielist.adapter.MovieImageAdapter
