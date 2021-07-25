@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyPopuplerMovieList</string>
+    <string name="movielist">Populer Movie</string>
+    <string name="moviedetail">MovieDetails</string>
+    <string name="release_date">Release Date :</string>
+    <string name="rating">Rating:</string>
+    <string name="runtime">Runtime:</string>
+    <string name="budget">Budget:</string>
+    <string name="revenue">Revenue:</string>
+    <string name="overview">Overview</string>
+    <string name="movie_info">Movie Info</string>
+</resources>
